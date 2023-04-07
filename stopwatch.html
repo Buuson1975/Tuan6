@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        button {
+            background: gray;
+            color: aliceblue;
+            border: solid 1px white;
+            border-radius: 2px;
+        }
+        
+        button:hover {
+            background: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stopwatch">
+        <h1>Stopwatch</h1>
+        <span id="hour">00</span>
+        <span>:</span>
+        <span id="minute">00</span>
+        <span>:</span>
+        <span id="seconds">00</span>
+        <span>:</span>
+        <span id="timer">00</span> <br>
+
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+    </div>
+
+
+    <script>
+        var seconds = document.getElementById("seconds");
+        var hour = document.getElementById("hour")
+        var seconds = document.getElementById("seconds")
+        var timer = document.getElementById("timer")
+
+        var start = document.getElementById("start");
+        var stop = document.getElementById("stop");
+        var reset = document.getElementById("reset");
+
+
+
+        var gio = 0;
+        var phut = 0;
+        var giay = 0;
+        var mms = 0;
+        var Interval;
+        start.onclick = () => {
+            start.classList.add("chay")
+
+            Interval = setInterval(() => {
+                mms++;
+                if (mms == 100) {
+                    giay++;
+                    mms = 0;
+                }
+                if (giay == 60) {
+                    phut++;
+                    giay = 0;
+                }
+                if (phut == 60) {
+                    gio++;
+                    phut = 0;
+                }
+                let gioString = gio;
+                let phutString = phut;
+                let giayString = giay;
+                let mmsString = mms;
+
+                if (gio < 10) {
+                    gioString = "0" + gio;
+                }
+                if (phut < 10) {
+                    phutString = "0" + phut;
+                }
+                if (giay < 10) {
+                    giayString = "0" + giay;
+                }
+
+                document.getElementById("hour").innerText = gioString
+                document.getElementById("minute").innerText = phutString
+                document.getElementById("seconds").innerText = giayString
+                document.getElementById("timer").innerText = mmsString
+            }, 0.0001)
+
+        }
+
+        stop.onclick = () => {
+
+            // start.classList.remove("Chay");
+            // stop.classList.add("Ngung chay");
+            clearInterval(Interval)
+
+
+
+        }
+        reset.onclick = () => {
+            clearInterval(Interval)
+            gio = 0;
+            phut = 0;
+            giay = 0;
+            mms = 0;
+            document.getElementById("hour").innerText = "00";
+            document.getElementById("minute").innerText = "00";
+            document.getElementById("seconds").innerText = "00";
+            document.getElementById("timer").innerText = "00";
+        }
+
+        // function stopwatch() {
+        //     if (timer) {
+        //         count++;
+        //     }
+        //     if (count == 100) {
+        //         seconds++;
+        //         count = 0;
+        //     }
+        //     if (seconds == 60) {
+        //         minute++;
+        //         seconds = 0;
+        //     }
+        //     if (minute == 60) {
+        //         hour++;
+        //         minute = 0;
+        //         seconds = 0;
+        //     }
+        // }
+    </script>
+
+</body>
+
+</html>

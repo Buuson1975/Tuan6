@@ -1,0 +1,15 @@
+button {
+    background: gray;
+    color: aliceblue;
+    border: solid 1px white;
+    border-radius: 2px;
+}
+
+button:hover {
+    background: aqua;
+}
+
+#stopwatch {
+    padding-left: 500px;
+    align-items: center;
+}
